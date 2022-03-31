@@ -16,8 +16,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -41,8 +41,8 @@
     </build>
 
     <properties>
-        <java.compiler.source>11</java.compiler.source>
-        <java.compiler.target>11</java.compiler.target>
+        <java.compiler.source>17</java.compiler.source>
+        <java.compiler.target>17</java.compiler.target>
         <mockito.version>3.4.4</mockito.version>
     </properties>
 
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.16.1</version>
+            <version>3.22.0</version>
             <scope>test</scope>
         </dependency>
 

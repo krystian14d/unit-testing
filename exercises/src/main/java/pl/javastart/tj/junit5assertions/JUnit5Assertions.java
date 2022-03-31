@@ -1,17 +1,24 @@
 package pl.javastart.tj.junit5assertions;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class JUnit5Assertions {
 
-    private Map<String, Code> codes;
+    private Map<String, Code> codes = new HashMap<>();
 
     /**
      * Sprawdza czy liczba jest liczbą pierwszą (czy dzieli się tylko przez siebie i 1)
      */
     boolean isPrimeNumber(int number) {
-        return false;
+        for (int i = 2; i < Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     /**
@@ -19,7 +26,8 @@ public class JUnit5Assertions {
      * Jeśli kod dla danego klucza istnieje to powinien zostać zwrócony istniejący obiekt
      */
     Code getCode(String key) {
-        if (!codes.containsKey(key)) {
+
+        if (codes.containsKey(key)) {
             return codes.get(key);
         } else {
             // simulating long time for generating code
@@ -29,7 +37,7 @@ public class JUnit5Assertions {
                 e.printStackTrace();
             }
             String codeValue = UUID.randomUUID().toString();
-            Code code = new Code(key, codeValue, null);
+            Code code = new Code(key, codeValue, System.currentTimeMillis());
             codes.put(key, code);
             return code;
         }

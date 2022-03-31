@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EnumSourceExample {
 
     @ParameterizedTest
-    @EnumSource(value = SignupStatus.class, mode = EnumSource.Mode.EXCLUDE, names = "PAID")
+    @EnumSource(value = SignupStatus.class, mode = EnumSource.Mode.EXCLUDE, names = {"PAID"})
     void shouldNotHaveAccess(SignupStatus signupStatus) {
         // given
         AccessController accessController = new AccessController();
