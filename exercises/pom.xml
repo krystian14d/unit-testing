@@ -26,7 +26,7 @@
     <properties>
         <java.compiler.source>17</java.compiler.source>
         <java.compiler.target>17</java.compiler.target>
-        <mockito.version>3.4.4</mockito.version>
+        <mockito.version>4.4.0</mockito.version>
         <junit.version>5.4.0</junit.version>
     </properties>
 
