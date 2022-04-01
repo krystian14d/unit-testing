@@ -1,4 +1,4 @@
-package pl.javastart.tj.assertjintro;
+package pl.javastart.tj.junit5assertions.assertjintro;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
