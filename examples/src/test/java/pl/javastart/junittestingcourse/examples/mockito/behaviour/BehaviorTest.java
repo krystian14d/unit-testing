@@ -29,22 +29,6 @@ public class BehaviorTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testMockitoWhenValues() {
         User user = Mockito.mock(User.class);
