@@ -8,11 +8,9 @@ public class PasswordResetGenerationService {
         this.randomTextGenerator = randomTextGenerator;
     }
 
-    public String preparePasswordResetMessage() {
-
+    public String preparePasswordResetMesage(){
         return "Cześć, aby przejść do resetowania hasła naciśnij " +
                 "<a href=\"https://example.com/reset?key=" + randomTextGenerator.getRandomText() + "\">ten link</a>";
-
     }
 
 }
