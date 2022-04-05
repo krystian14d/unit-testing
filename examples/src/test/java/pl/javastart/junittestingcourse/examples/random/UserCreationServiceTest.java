@@ -1,14 +1,16 @@
 package pl.javastart.junittestingcourse.examples.random;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.time.ZonedDateTime;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class UserCreationServiceTest {
 
@@ -18,7 +20,7 @@ class UserCreationServiceTest {
     private ZonedDateTime now;
 
     @BeforeEach
-    void init() {
+    void init(){
         MockitoAnnotations.openMocks(this);
         userCreationService = new UserCreationService(dateTimeProvider);
 
@@ -27,31 +29,30 @@ class UserCreationServiceTest {
     }
 
     @Test
-    void shouldCreateUserWithValidName() {
-        // when
+    void shouldCreateUserWithValidName(){
+        //when
         User user = userCreationService.createUser("Ania");
-
-        // then
+        //then
         assertThat(user.getName()).isEqualTo("Ania");
     }
 
     @Test
-    void shouldCreateUserWithNonNullCreationDate() {
-        // when
-        User user = userCreationService.createUser("");
+    void shouldCreateUserWithNonNullDate(){
+        User user = userCreationService.createUser("Ania");
 
-        // then
         assertThat(user.getCreationDate()).isNotNull();
     }
 
     @Test
-    void shouldCreateUserWithCurrentCreationDate() {
-        // when
-        User user = userCreationService.createUser("");
+    void shouldCreateUserWithCurrentCreationDate(){
+        //when
+        User user = userCreationService.createUser("Darek");
 
-        // then
+        //then
         assertThat(user.getCreationDate()).isEqualTo(now);
     }
+
+
 
 
 }

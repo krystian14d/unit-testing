@@ -14,7 +14,8 @@ import static org.mockito.Mockito.when;
 
 class UserTest {
 
-    @Mock DateTimeProvider dateTimeProvider;
+    @Mock
+    DateTimeProvider dateTimeProvider;
 
     @BeforeEach
     void init() {
@@ -23,42 +24,41 @@ class UserTest {
 
     @Test
     void shouldBeOlderThanAYear() {
+        //given
+        ZonedDateTime userCreationDate = ZonedDateTime.of(2021, 04, 04, 15,
+                0, 0, 0, ZoneId.of("Europe/Warsaw"));
 
-        ZonedDateTime creationDate = ZonedDateTime.of(2019, 8, 7,
-                15, 0, 0, 0, ZoneId.of("Europe/Warsaw"));
+        User user = new User("Ania", userCreationDate);
 
-        User user = new User("", creationDate);
-
-        ZonedDateTime now = ZonedDateTime.of(2020, 8, 7,
-                15, 0, 0, 0, ZoneId.of("Europe/Warsaw"));
+        ZonedDateTime now = ZonedDateTime.of(2022, 04, 05, 15,
+                0, 0, 0, ZoneId.of("Europe/Warsaw"));
 
         when(dateTimeProvider.nowAsZonedDateTime()).thenReturn(now);
 
-        // when
+        //when
         boolean olderThanAYear = user.isOlderThanAYear(dateTimeProvider);
 
-        // then
+        //then
         assertThat(olderThanAYear).isTrue();
     }
 
     @Test
     void shouldNotBeOlderThanAYear() {
+        //given
+        ZonedDateTime userCreationDate = ZonedDateTime.of(2021, 04, 04, 15,
+                0, 0, 0, ZoneId.of("Europe/Warsaw"));
 
-        ZonedDateTime creationDate = ZonedDateTime.of(2019, 8, 7,
-                15, 0, 0, 0, ZoneId.of("Europe/Warsaw"));
+        User user = new User("Ania", userCreationDate);
 
-        User user = new User("", creationDate);
-
-        ZonedDateTime now = ZonedDateTime.of(2020, 8, 6,
-                15, 0, 0, 0, ZoneId.of("Europe/Warsaw"));
+        ZonedDateTime now = ZonedDateTime.of(2022, 03, 05, 15,
+                0, 0, 0, ZoneId.of("Europe/Warsaw"));
 
         when(dateTimeProvider.nowAsZonedDateTime()).thenReturn(now);
 
-        // when
+        //when
         boolean olderThanAYear = user.isOlderThanAYear(dateTimeProvider);
 
-        // then
+        //then
         assertThat(olderThanAYear).isFalse();
     }
-
 }
