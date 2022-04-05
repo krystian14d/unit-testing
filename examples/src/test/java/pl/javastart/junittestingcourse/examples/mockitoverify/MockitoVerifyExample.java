@@ -9,11 +9,12 @@ public class MockitoVerifyExample {
 
     @Test
     void verifyExample() {
-        MyClass mock = Mockito.mock(MyClass.class);
+        MyClass mock = mock(MyClass.class);
 
         mock.myMethod();
+        mock.myMethod();
 
-        verify(mock, atLeastOnce()).myMethod();
+        verify(mock, times(2)).myMethod();
+
     }
-
 }
